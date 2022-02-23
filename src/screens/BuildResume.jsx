@@ -1,6 +1,10 @@
 import EmploymentHistorySection from "../components/EmploymentHistory";
 import PersonalDetailsSection from "../components/PersonalDetails";
 import ProfessionalSummarySection from "../components/ProfessionalSummary";
+import EducationDetailsSection from "../components/EducationDetails";
+import SocialLinksSection from "../components/SocialLinks";
+import SkillsSection from "../components/Skills";
+
 function ResumeBuilder() {
   return (
     <div className="ResumeBuilder page ">
@@ -10,15 +14,10 @@ function ResumeBuilder() {
           <PersonalDetailsSection />
           <ProfessionalSummarySection />
           <EmploymentHistorySection />
-          <section>
-            <h3 className="my-4">Education : </h3>
-          </section>
-          <section>
-            <h3 className="my-4">Websites and Social Links : </h3>
-          </section>
-          <section>
-            <h3 className="my-4">Skills : </h3>
-          </section>
+          <EducationDetailsSection />
+          <SocialLinksSection />
+          <SkillsSection />
+          
         </form>
       </div>
     </div>

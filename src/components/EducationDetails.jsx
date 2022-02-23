@@ -1,67 +1,65 @@
 import { useState } from "react";
 import addSrc from "../assets/add.svg";
-
-function EmploymentHistory() {
-  const [employemntHis, setEmploymentHis] = useState([]);
+function EducationDetails() {
+  const [Education, setEducation] = useState([]);
   return (
     <section>
-      <h3 className="my-4">Employment History :</h3>
-      {employemntHis.map((emHis) => (
+      <h3 className="my-4">Education : </h3>
+      {Education.map((ed) => (
         <div className="card">
           <div className="d-flex flex-column flex-md-row justify-content-center">
             <div className="mb-3 mx-2 w-100 input-div">
-              <label htmlFor="em-job-title" className="form-label">
-                Job Title
+              <label htmlFor="school" className="form-label">
+                School
               </label>
-              <input type="text" className="form-control" id="em-job-title" />
+              <input type="text" className="form-control" id="school" />
             </div>
             <div className="mb-3 mx-2 w-100 input-div ">
-              <label htmlFor="employer" className="form-label">
-                Employer
+              <label htmlFor="degree" className="form-label">
+                Degree
               </label>
-              <input className="form-control" type="text" id="employer" />
+              <input className="form-control" type="text" id="degree" />
             </div>
           </div>
           <div className="d-flex flex-column flex-md-row justify-content-center">
             <div className="mb-3 mx-2 w-100 input-div">
-              <label htmlFor="em-start-date" className="form-label">
+              <label htmlFor="ed-start-date" className="form-label">
                 start & end Date
               </label>
               <div className="d-flex">
                 <input
                   type="date"
                   className="form-control"
-                  id="em-start-date"
+                  id="ed-start-date"
                 />
-                <input type="date" className="form-control" id="em-end-date" />
+                <input type="date" className="form-control" id="ed-end-date" />
               </div>
             </div>
             <div className="mb-3 mx-2 w-100 input-div">
-              <label htmlFor="city" className="form-label">
+              <label htmlFor="ed-city" className="form-label">
                 City
               </label>
-              <input type="text" className="form-control" id="city" />
+              <input type="text" className="form-control" id="ed-city" />
             </div>
           </div>
           <div className="mb-3 mx-2 w-100">
-            <label htmlFor="description" className="form-label">
+            <label htmlFor="ed-description" className="form-label">
               Description
             </label>
             <div className="w-100 text-area-div d-flex justify-content-center">
-              <textarea className="form-control" id="description"></textarea>
+              <textarea className="form-control" id="ed-description"></textarea>
             </div>
           </div>
         </div>
       ))}
       <p
         className="text-center add-more-btn text-primary"
-        onClick={() => setEmploymentHis([...employemntHis, 1])}
+        onClick={() => setEducation([...Education, 1])}
       >
-        Add To Employment History{" "}
-        <img src={addSrc} width="32" height="32" alt="" />
+        Add To Education <img src={addSrc} width="32" height="32" alt="" />
       </p>
     </section>
   );
 }
 
-export default EmploymentHistory;
+export default EducationDetails;

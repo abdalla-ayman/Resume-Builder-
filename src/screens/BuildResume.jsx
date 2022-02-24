@@ -17,7 +17,7 @@ function ResumeBuilder() {
           <EducationDetailsSection />
           <SocialLinksSection />
           <SkillsSection />
-          
+       
         </form>
       </div>
     </div>

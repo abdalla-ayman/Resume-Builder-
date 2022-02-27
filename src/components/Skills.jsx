@@ -111,7 +111,7 @@ function Skills() {
             {
               id: uuidv4(),
               skill: "",
-              lvl: 1,
+              lvl: 0,
             },
           ]);
         }}

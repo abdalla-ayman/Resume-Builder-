@@ -1,41 +1,82 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 import addSrc from "../assets/add.svg";
 function SocialLinks() {
   const [links, setLinks] = useState([]);
+  const handleChange = (e, id) => {
+    const name = e.target.name;
+    setLinks([
+      ...links.map((link) => {
+        if (link.id == id) {
+          return {
+            ...link,
+            [name]: e.target.value,
+          };
+        } else {
+          return link;
+        }
+      }),
+    ]);
+  };
   return (
     <section>
       <h3 className="my-4">Websites and Social Links : </h3>
       {links.map((link) => (
-        <div className="card accordion-item">
-          <h2 className="accordion-header" id="headingOne">
+        <div className="card accordion-item" key={link.id}>
+          <h2 className="accordion-header" id={"headingOne" + link.id}>
             <button
               className="accordion-button"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#collapseOne"
+              data-bs-target={"#collapseOne" + link.id}
               aria-expanded="true"
-              aria-controls="collapseOne"
+              aria-controls={"collapseOne" + link.id}
             >
-              Accordion Item #1
+              {link.label || link.link ? (
+                <div className="d-flex flex-column">
+                  <p className="mb-1">{link.label ? link.label : " "}</p>
+
+                  <p className="small m-0 text-secondary">
+                    {link.link ? link.link : " "}
+                  </p>
+                </div>
+              ) : (
+                "(Not specified)"
+              )}
             </button>
           </h2>
           <div
             className="accordion-body accordion-collapse collapse show"
-            id="collapseOne"
+            id={"collapseOne" + link.id}
             aria-labelledby="headingOne"
           >
             <div className="d-flex flex-column flex-md-row justify-content-center">
               <div className="mb-3 mx-2 w-100 input-div">
-                <label htmlFor="label" className="form-label">
+                <label htmlFor={"label" + link.id} className="form-label">
                   Label
                 </label>
-                <input type="text" className="form-control" id="label" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id={"label" + link.id}
+                  name="label"
+                  onChange={(e) => handleChange(e, link.id)}
+                  value={link.label}
+                />
               </div>
               <div className="mb-3 mx-2 w-100 input-div ">
-                <label htmlFor="link" className="form-label">
-                  Link{" "}
+                <label htmlFor={"link" + link.id} className="form-label">
+                  Link
                 </label>
-                <input className="form-control" type="text" id="link" />
+                <input
+                  className="form-control"
+                  type="text"
+                  id={"link" + link.id}
+                  name="link"
+                  onChange={(e) => handleChange(e, link.id)}
+                  value={link.link}
+                />
               </div>
             </div>
           </div>
@@ -43,7 +84,16 @@ function SocialLinks() {
       ))}
       <p
         className="text-center add-more-btn text-primary"
-        onClick={() => setLinks([...links, 1])}
+        onClick={() => {
+          setLinks([
+            ...links,
+            {
+              id: uuidv4(),
+              label: "",
+              link: "",
+            },
+          ]);
+        }}
       >
         Add To Links <img src={addSrc} width="32" height="32" alt="" />
       </p>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import addSrc from "../assets/add.svg";
+import trashSrc from "../assets/trash.svg";
 
 function EmploymentHistory() {
   const [employemntHis, setEmploymentHis] = useState([]);
@@ -26,7 +27,7 @@ function EmploymentHistory() {
       <h3 className="my-4">Employment History :</h3>
       {employemntHis.map((emHis) => (
         <div className="card accordion-item" key={emHis.id}>
-          <h2 className="accordion-header" id={"headingOne" + emHis.id}>
+          <h2 className="accordion-header d-flex" id={"headingOne" + emHis.id}>
             <button
               className="accordion-button"
               type="button"
@@ -35,7 +36,22 @@ function EmploymentHistory() {
               aria-expanded="true"
               aria-controls={"collapseOne" + emHis.id}
             >
-              { (emHis.jobTitle || emHis.employer) ? `${emHis.jobTitle || " "} ${emHis.employer ? "at" : ""} ${emHis.employer || " "}` :    "(Not specified)"}
+              {emHis.jobTitle || emHis.employer
+                ? `${emHis.jobTitle || " "} ${emHis.employer ? "at" : ""} ${
+                    emHis.employer || " "
+                  }`
+                : "(Not specified)"}
+            </button>
+            <button
+              type="button"
+              className="de-btn"
+              onClick={() => {
+                setEmploymentHis([
+                  ...employemntHis.filter((lnk) => lnk.id != emHis.id),
+                ]);
+              }}
+            >
+              <img src={trashSrc} alt="" width={32} height={16} />
             </button>
           </h2>
           <div

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import addSrc from "../assets/add.svg";
+import trashSrc from "../assets/trash.svg";
 function SocialLinks() {
   const [links, setLinks] = useState([]);
   const handleChange = (e, id) => {
@@ -24,7 +25,7 @@ function SocialLinks() {
       <h3 className="my-4">Websites and Social Links : </h3>
       {links.map((link) => (
         <div className="card accordion-item" key={link.id}>
-          <h2 className="accordion-header" id={"headingOne" + link.id}>
+          <h2 className="accordion-header d-flex" id={"headingOne" + link.id}>
             <button
               className="accordion-button"
               type="button"
@@ -44,6 +45,15 @@ function SocialLinks() {
               ) : (
                 "(Not specified)"
               )}
+            </button>
+            <button
+              type="button"
+              className="de-btn"
+              onClick={() => {
+                setLinks([...links.filter((lnk) => lnk.id != link.id)]);
+              }}
+            >
+              <img src={trashSrc} alt="" width={32} height={16} />
             </button>
           </h2>
           <div

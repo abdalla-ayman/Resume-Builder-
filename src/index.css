@@ -34,8 +34,12 @@ textarea {
 }
 
 .card {
-  background-color: #EDEDED;
+  background-color: #ededed;
   padding: 10px;
   margin: 10px 0;
+}
 
+.de-btn {
+  border: none;
+  outline: none;
 }

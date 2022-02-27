@@ -2,6 +2,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import addSrc from "../assets/add.svg";
+import trashSrc from "../assets/trash.svg";
 
 function Skills() {
   const [skills, setSkills] = useState([]);
@@ -33,7 +34,7 @@ function Skills() {
       <h3 className="my-4">Skills : </h3>
       {skills.map((skill) => (
         <div className="card accordion-item" key={skill.id}>
-          <h2 className="accordion-header" id={"headingOne" + skill.id}>
+          <h2 className="accordion-header d-flex" id={"headingOne" + skill.id}>
             <button
               className="accordion-button"
               type="button"
@@ -42,7 +43,7 @@ function Skills() {
               aria-expanded="true"
               aria-controls={"collapseOne" + skill.id}
             >
-             {skill.lvl || skill.skill ? (
+              {skill.lvl || skill.skill ? (
                 <div className="d-flex flex-column">
                   <p className="mb-1">{skill.skill ? skill.skill : " "}</p>
 
@@ -53,6 +54,15 @@ function Skills() {
               ) : (
                 "(Not specified)"
               )}
+            </button>
+            <button
+              type="button"
+              className="de-btn"
+              onClick={() => {
+                setSkills([...skills.filter((lnk) => lnk.id != skill.id)]);
+              }}
+            >
+              <img src={trashSrc} alt="" width={32} height={16} />
             </button>
           </h2>
           <div

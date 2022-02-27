@@ -1,6 +1,7 @@
 import { useState } from "react";
 import addSrc from "../assets/add.svg";
 import { v4 as uuidv4 } from "uuid";
+import trashSrc from "../assets/trash.svg";
 
 function EducationDetails() {
   const [Education, setEducation] = useState([]);
@@ -26,7 +27,7 @@ function EducationDetails() {
       <h3 className="my-4">Education : </h3>
       {Education.map((ed) => (
         <div className="card accordion-item" key={ed.id}>
-          <h2 className="accordion-header" id={"headingOne" + ed.id}>
+          <h2 className="accordion-header d-flex" id={"headingOne" + ed.id}>
             <button
               className="accordion-button"
               type="button"
@@ -40,6 +41,15 @@ function EducationDetails() {
                     ed.school || " "
                   }`
                 : "(Not specified)"}
+            </button>
+            <button
+              type="button"
+              className="de-btn"
+              onClick={() => {
+                setEducation([...Education.filter((lnk) => lnk.id != ed.id)]);
+              }}
+            >
+              <img src={trashSrc} alt="" width={32} height={16} />
             </button>
           </h2>
           <div

@@ -3,12 +3,11 @@ import addSrc from "../assets/add.svg";
 import { v4 as uuidv4 } from "uuid";
 import trashSrc from "../assets/trash.svg";
 
-function EducationDetails() {
-  const [Education, setEducation] = useState([]);
+function EducationDetails(props) {
+  const { Education, setEducation } = props;
 
   const handleChange = (e, id) => {
     const name = e.target.name;
-    console.log(e.target.value, e.target.name);
     setEducation([
       ...Education.map((ed) => {
         if (ed.id == id) {

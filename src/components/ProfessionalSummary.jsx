@@ -1,6 +1,6 @@
 import { useState } from "react";
-function ProfessionalSummary() {
-  const [summary, setSummary] = useState("");
+function ProfessionalSummary(props) {
+  const { summary, setSummary } = props;
   return (
     <section>
       <h3 className="my-4">Professional Summary : </h3>

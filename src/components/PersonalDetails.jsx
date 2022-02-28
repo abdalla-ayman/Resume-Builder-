@@ -1,23 +1,15 @@
 import { useState } from "react";
 
-function PersonalDetails() {
-  const [state, setState] = useState({
-    jobTitle: "",
-    Photo: null,
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    country: "",
-    city: "",
-    address: "",
-    postalCode: "",
-  });
+function PersonalDetails(props) {
+  const { personalDetails, setPersonalDetails } = props;
 
   const handleChange = (e) => {
-    console.log(e.target.name);
     const name = e.target.name;
-    setState({ ...state, [name]: e.target.value });
+    if (name == "photo") {
+      setPersonalDetails({ ...personalDetails, photo: e.target.files[0] });
+    } else {
+      setPersonalDetails({ ...personalDetails, [name]: e.target.value });
+    }
   };
 
   return (
@@ -31,7 +23,7 @@ function PersonalDetails() {
           <input
             type="text"
             name="jobTitle"
-            value={state.jobTitle}
+            value={personalDetails.jobTitle}
             className="form-control"
             id="job-title"
             onChange={handleChange}
@@ -43,8 +35,9 @@ function PersonalDetails() {
           </label>
           <input
             className="form-control"
+            accept="image/*"
             name="photo"
-            value={state.Photo}
+            value={personalDetails.Photo}
             type="file"
             id="photo"
             onChange={handleChange}
@@ -59,7 +52,7 @@ function PersonalDetails() {
           <input
             type="text"
             name="firstName"
-            value={state.firstName}
+            value={personalDetails.firstName}
             className="form-control"
             id="first-name"
             onChange={handleChange}
@@ -73,10 +66,10 @@ function PersonalDetails() {
             type="text"
             className="form-control"
             name="lastName"
-            value={state.lastName}
+            value={personalDetails.lastName}
             id="last-name"
             onChange={handleChange}
-/>
+          />
         </div>
       </div>
       <div className="d-flex flex-column flex-md-row justify-content-center">
@@ -88,7 +81,7 @@ function PersonalDetails() {
             type="email"
             className="form-control"
             id="email"
-            value={state.email}
+            value={personalDetails.email}
             name="email"
             onChange={handleChange}
           />
@@ -99,7 +92,7 @@ function PersonalDetails() {
           </label>
           <input
             type="tel"
-            value={state.phoneNumber}
+            value={personalDetails.phoneNumber}
             name="phoneNumber"
             className="form-control"
             id="phone-number"
@@ -114,7 +107,7 @@ function PersonalDetails() {
           </label>
           <input
             type="text"
-            value={state.country}
+            value={personalDetails.country}
             name="country"
             className="form-control"
             id="country"
@@ -130,7 +123,7 @@ function PersonalDetails() {
             className="form-control"
             id="p-e-city"
             name="city"
-            value={state.city}
+            value={personalDetails.city}
             onChange={handleChange}
           />
         </div>
@@ -144,7 +137,7 @@ function PersonalDetails() {
             type="text"
             className="form-control"
             id="address"
-            value={state.address}
+            value={personalDetails.address}
             name="address"
             onChange={handleChange}
           />
@@ -156,7 +149,7 @@ function PersonalDetails() {
           <input
             type="text"
             name="postalCode"
-            value={state.postalCode}
+            value={personalDetails.postalCode}
             className="form-control"
             id="postal-code"
             onChange={handleChange}

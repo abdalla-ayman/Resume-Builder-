@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 
 import addSrc from "../assets/add.svg";
 import trashSrc from "../assets/trash.svg";
-function SocialLinks() {
-  const [links, setLinks] = useState([]);
+function SocialLinks(props) {
+  const { links, setLinks } = props;
   const handleChange = (e, id) => {
     const name = e.target.name;
     setLinks([

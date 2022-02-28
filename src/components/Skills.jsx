@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 import addSrc from "../assets/add.svg";
 import trashSrc from "../assets/trash.svg";
 
-function Skills() {
-  const [skills, setSkills] = useState([]);
+function Skills(props) {
+  const { skills, setSkills } = props;
   const skillLvls = {
     1: "Novice",
     2: "Beginner",

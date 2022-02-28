@@ -3,12 +3,11 @@ import { v4 as uuidv4 } from "uuid";
 import addSrc from "../assets/add.svg";
 import trashSrc from "../assets/trash.svg";
 
-function EmploymentHistory() {
-  const [employemntHis, setEmploymentHis] = useState([]);
+function EmploymentHistory(props) {
+  const { employemntHis, setEmploymentHis } = props;
 
   const handleChange = (e, id) => {
     const name = e.target.name;
-    console.log(e.target.value, e.target.name);
     setEmploymentHis([
       ...employemntHis.map((em) => {
         if (em.id == id) {

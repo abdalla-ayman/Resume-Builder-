@@ -4,6 +4,7 @@ import ProfessionalSummarySection from "../components/ProfessionalSummary";
 import EducationDetailsSection from "../components/EducationDetails";
 import SocialLinksSection from "../components/SocialLinks";
 import SkillsSection from "../components/Skills";
+import PDFfile from "../components/PDFfile";
 import { useState } from "react";
 
 function ResumeBuilder() {
@@ -54,10 +55,20 @@ function ResumeBuilder() {
           <SkillsSection skills={skills} setSkills={setSkills} />
           <div className="w-100 mt-5 d-flex justify-content-center">
             <button type="submit" className="btn btn-success btn-lg">
-              Build{" "}
+              Build Your Resume
             </button>
           </div>
         </form>
+        <PDFfile
+          state={{
+            personalDetails,
+            summary,
+            employemntHis,
+            Education,
+            skills,
+            links,
+          }}
+        />
       </div>
     </div>
   );

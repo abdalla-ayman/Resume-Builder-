@@ -99,7 +99,7 @@ function EmploymentHistory(props) {
                 </label>
                 <div className="d-flex">
                   <input
-                    type="date"
+                    type="month"
                     className="form-control"
                     id={"em-start-date" + emHis.id}
                     name="startDate"
@@ -107,7 +107,7 @@ function EmploymentHistory(props) {
                     value={emHis.startDate}
                   />
                   <input
-                    type="date"
+                    type="month"
                     className="form-control"
                     id="em-end-date"
                     name="endDate"
@@ -156,8 +156,8 @@ function EmploymentHistory(props) {
               id: uuidv4(),
               jobTitle: "",
               employer: "",
-              startDate: new Date().toISOString().split("T")[0],
-              endDate: new Date().toISOString().split("T")[0],
+              startDate: "",
+              endDate: "",
               city: "",
               description: "",
             },

@@ -91,7 +91,7 @@ function EducationDetails(props) {
                 </label>
                 <div className="d-flex">
                   <input
-                    type="date"
+                    type="month"
                     className="form-control"
                     id={"ed-start-date" + ed.id}
                     name="startDate"
@@ -99,7 +99,7 @@ function EducationDetails(props) {
                     value={ed.startDate}
                   />
                   <input
-                    type="date"
+                    type="month"
                     className="form-control"
                     id={"ed-end-date" + ed.id}
                     name="endDate"

@@ -8,9 +8,11 @@ import {
   StyleSheet,
   PDFViewer,
   Link,
+  Circle,
+  Svg,
 } from "@react-pdf/renderer";
 
-import imgSrc from "../assets/gg.jpg";
+import bgImgSrc from "../assets/bg.jpg";
 
 Font.register({
   family: "Ubuntu",
@@ -43,9 +45,11 @@ const styles = StyleSheet.create({
     height: 100,
     border: 3,
     borderColor: "black",
+    color: "white",
     borderRadius: "50%",
     marginBottom: 10,
   },
+
   header: {
     display: "flex",
     flexDirection: "column",
@@ -61,12 +65,21 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     fontSize: 12,
+    width: "50%",
+    paddingRight: 15,
   },
   infoSection: {
     marginHorizontal: 30,
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  infoHeader: {
+    width: 70,
   },
   infoData: {
-    marginLeft: 20,
+    marginLeft: 8,
+    width: 200,
   },
   section: {
     marginHorizontal: 30,
@@ -100,6 +113,27 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
   },
+  skill: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  skillheader: {
+    fontSize: 14,
+    fontWeight: "thin",
+    color: "black",
+    width: 70,
+  },
+  lvl: {
+    color: "black",
+  },
+  bgImage: {
+    position: "absolute",
+    minWidth: "100%",
+    minHeight: "100%",
+    display: "block",
+    height: "100%",
+    width: "100%",
+  },
 });
 
 function PDFfile({ state }) {
@@ -111,13 +145,35 @@ function PDFfile({ state }) {
     skills,
     links,
   } = state;
-  console.log(employemntHis.length);
+
   return (
     <PDFViewer width={900} height={1000}>
       <Document style={styles.doc}>
-        <Page>
+        <Page style={{ backgroundColor: "#EDEDED" }} size="LETTER">
+          <Image src={bgImgSrc} style={styles.bgImage} fixed />
           <View style={styles.header}>
-            <Image src={imgSrc} style={styles.img} />
+            {personalDetails.photo ? (
+              <Image
+                src={URL.createObjectURL(personalDetails.photo)}
+                style={styles.img}
+              />
+            ) : personalDetails.firstName ? (
+              <View
+                style={{
+                  ...styles.img,
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#17996E",
+                  borderColor: "black",
+                  textAlign: "center",
+                  fontSize: 50,
+                }}
+              >
+                <Text>{personalDetails.firstName[0].toUpperCase()}</Text>
+              </View>
+            ) : null}
             <Text>
               {personalDetails.firstName + " " + personalDetails.lastName}
             </Text>
@@ -129,7 +185,7 @@ function PDFfile({ state }) {
             personalDetails.city ||
             personalDetails.country ? (
               <View style={styles.infoContainer}>
-                <Text>Address</Text>
+                <Text style={styles.infoHeader}>Address</Text>
                 <View style={styles.infoData}>
                   <Text>{personalDetails.address}</Text>
                   <Text>
@@ -141,7 +197,7 @@ function PDFfile({ state }) {
             ) : null}
             {personalDetails.phoneNumber ? (
               <View style={styles.infoContainer}>
-                <Text>Phone</Text>
+                <Text style={styles.infoHeader}>Phone</Text>
                 <Text style={styles.infoData}>
                   {personalDetails.phoneNumber}
                 </Text>
@@ -149,13 +205,13 @@ function PDFfile({ state }) {
             ) : null}
             {personalDetails.email ? (
               <View style={styles.infoContainer}>
-                <Text>Email</Text>
+                <Text style={styles.infoHeader}>Email</Text>
                 <Text style={styles.infoData}>{personalDetails.email}</Text>
               </View>
             ) : null}
             {links.length ? (
               <View style={styles.infoContainer}>
-                <Text>Links</Text>
+                <Text style={styles.infoHeader}>Links</Text>
                 <View style={{ ...styles.infoData, ...styles.links }}>
                   {links.map((link) => {
                     return (
@@ -171,15 +227,17 @@ function PDFfile({ state }) {
 
           {summary ? (
             <View style={styles.section}>
-              <Text style={styles.sectionHeader}>01 PROFILE </Text>
-              <Text style={styles.sectionBody}>{summary}</Text>
+              <Text style={styles.sectionHeader}>PROFILE </Text>
+              <Text style={{ ...styles.sectionBody, marginTop: 15 }}>
+                {summary}
+              </Text>
             </View>
           ) : null}
           {employemntHis.length ? (
             <View style={styles.emSection}>
-              <Text>02 EMPLOYMENT HOSTORY</Text>
+              <Text>EMPLOYMENT HOSTORY</Text>
               {employemntHis.map((em) => (
-                <View style={styles.innerEmSection}>
+                <View style={styles.innerEmSection} wrap={false}>
                   <View style={{ ...styles.sectionHeader, fontSize: 12 }}>
                     <Text>{em.startDate + "---" + em.endDate}</Text>
                     <Text style={{ color: "#555" }}>{em.city}</Text>
@@ -199,9 +257,9 @@ function PDFfile({ state }) {
 
           {Education.length ? (
             <View style={styles.emSection}>
-              <Text>02 EMPLOYMENT HOSTORY</Text>
+              <Text> EDUCATION</Text>
               {Education.map((em) => (
-                <View style={styles.innerEmSection}>
+                <View style={styles.innerEmSection} wrap={false}>
                   <View style={{ ...styles.sectionHeader, fontSize: 12 }}>
                     <Text>{em.startDate + "---" + em.endDate}</Text>
                     <Text style={{ color: "#555" }}>{em.city}</Text>
@@ -217,6 +275,58 @@ function PDFfile({ state }) {
                   </View>
                 </View>
               ))}
+            </View>
+          ) : null}
+
+          {skills.length ? (
+            <View style={styles.section} wrap={false}>
+              <Text style={styles.sectionHeader}>SKILLS</Text>
+              <View
+                style={{
+                  ...styles.sectionBody,
+                  ...styles.skill,
+                  marginVertical: 10,
+                  flexWrap: "wrap",
+                  justifyContent: "space-around",
+                }}
+              >
+                {skills.map((skill) => (
+                  <View
+                    style={{
+                      ...styles.skill,
+                      marginRight: 20,
+                      width: " 40%",
+                      marginVertical: 10,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text style={styles.skillheader}>{skill.skill}</Text>
+                    {skill.skill
+                      ? Array.apply(null, { length: 5 }).map((e, i) => {
+                          console.log(e, i, skill.lvl);
+                          return (
+                            <Svg
+                              viewBox="0 0 100 100"
+                              style={{
+                                width: 10,
+                                height: 10,
+                              }}
+                            >
+                              <Circle
+                                cx="50"
+                                cy="50"
+                                r="20"
+                                fill={i < skill.lvl ? "black" : "#C8C8C8"}
+                                stroke={i < skill.lvl ? "black" : "#C8C8C8"}
+                              />
+                            </Svg>
+                          );
+                        })
+                      : null}
+                  </View>
+                ))}
+              </View>
             </View>
           ) : null}
         </Page>

@@ -10,7 +10,7 @@ import { useState } from "react";
 function ResumeBuilder() {
   const [personalDetails, setPersonalDetails] = useState({
     jobTitle: "",
-    Photo: null,
+    photo: "",
     firstName: "",
     lastName: "",
     email: "",

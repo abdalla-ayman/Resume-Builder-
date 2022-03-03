@@ -16,12 +16,16 @@ function Skills(props) {
 
   const handleChange = (e, id) => {
     const name = e.target.name;
+    let value = e.target.value;
+    if (name == "lvl") {
+      value = Number(e.target.value);
+    }
     setSkills([
       ...skills.map((skill) => {
         if (skill.id == id) {
           return {
             ...skill,
-            [name]: e.target.value,
+            [name]: value,
           };
         } else {
           return skill;
@@ -111,7 +115,7 @@ function Skills(props) {
             {
               id: uuidv4(),
               skill: "",
-              lvl: 0,
+              lvl: 1,
             },
           ]);
         }}

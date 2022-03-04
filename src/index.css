@@ -31,6 +31,10 @@ textarea {
 
 .add-more-btn {
   cursor: pointer;
+  max-width: 300px;
+  width: 100%;
+  margin: 10px auto !important;
+  padding: 10px;
 }
 
 .card {
@@ -42,4 +46,46 @@ textarea {
 .de-btn {
   border: none;
   outline: none;
+}
+
+.floating {
+  position: fixed !important;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.floating button {
+  margin: 10px 30px;
+}
+
+.pdf-viwer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+}
+
+.About {
+  padding-top: 60px;
+  min-height: 100vh;
+}
+
+.About img {
+  width: 32px;
+  height: 32px;
+}
+
+.shoutOut {
+  text-align: center;
+  justify-self: flex-end;
+  bottom: 0;
+  margin-top: 50px;
+}
+
+.shoutOut p {
+  margin: 0;
 }

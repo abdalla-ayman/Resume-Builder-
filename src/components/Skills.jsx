@@ -108,7 +108,7 @@ function Skills(props) {
         </div>
       ))}
       <p
-        className="text-center add-more-btn text-primary"
+        className="text-center d-flex justify-content-between add-more-btn text-primary"
         onClick={() => {
           setSkills([
             ...skills,
@@ -120,7 +120,8 @@ function Skills(props) {
           ]);
         }}
       >
-        Add To Skills <img src={addSrc} width="32" height="32" alt="" />
+        <span>Add To Skills</span>
+        <img src={addSrc} width="32" height="32" alt="" />
       </p>
     </section>
   );

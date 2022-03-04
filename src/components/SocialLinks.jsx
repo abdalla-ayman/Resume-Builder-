@@ -93,7 +93,7 @@ function SocialLinks(props) {
         </div>
       ))}
       <p
-        className="text-center add-more-btn text-primary"
+        className="text-center d-flex justify-content-between add-more-btn text-primary"
         onClick={() => {
           setLinks([
             ...links,
@@ -105,7 +105,8 @@ function SocialLinks(props) {
           ]);
         }}
       >
-        Add To Links <img src={addSrc} width="32" height="32" alt="" />
+        <span>Add To Links</span>
+        <img src={addSrc} width="32" height="32" alt="" />
       </p>
     </section>
   );

@@ -148,7 +148,7 @@ function EmploymentHistory(props) {
         </div>
       ))}
       <p
-        className="text-center add-more-btn text-primary"
+        className="text-center d-flex justify-content-between add-more-btn text-primary"
         onClick={() => {
           setEmploymentHis([
             ...employemntHis,
@@ -164,7 +164,7 @@ function EmploymentHistory(props) {
           ]);
         }}
       >
-        Add To Employment History{" "}
+        <span>Add To Employment History </span>
         <img src={addSrc} width="32" height="32" alt="" />
       </p>
     </section>

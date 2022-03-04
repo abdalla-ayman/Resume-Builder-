@@ -65,6 +65,7 @@ function ResumeBuilder() {
                   "floating"
             }
           >
+{!isMobile && 
             <button
               type="button"
               className="btn btn-primary  d-pdf my-2 mx-2"
@@ -72,6 +73,7 @@ function ResumeBuilder() {
             >
               {displayPdf ? "Go Back" : "Preview Your CV"}
             </button>
+}
             <button type="submit" className="btn btn-success  d-pdf my-2 mx-2">
               <PDFDownloadLink
                 style={{ color: "white" }}

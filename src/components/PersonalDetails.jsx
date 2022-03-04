@@ -13,7 +13,7 @@ function PersonalDetails(props) {
   };
 
   return (
-    <section>
+    <section id="pd">
       <h3 className="my-4">Personal Details : </h3>
       <div className="d-flex flex-column flex-md-row justify-content-center">
         <div className="mb-3 mx-2 w-100 input-div">

@@ -51,13 +51,9 @@ textarea {
 .floating {
   position: fixed !important;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.floating button {
-  margin: 10px 30px;
+  right: 0;
+  z-index: 2000;
+  width: 200px !important;
 }
 
 .pdf-viwer {
@@ -72,7 +68,6 @@ textarea {
 .About {
   padding-top: 60px;
   min-height: 100vh;
-  
 }
 
 .About img {
@@ -89,4 +84,11 @@ textarea {
 
 .shoutOut p {
   margin: 0;
+}
+
+@media only screen and (max-width: 570px) {
+  #pd .input-div {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
 }

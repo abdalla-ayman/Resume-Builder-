@@ -7,6 +7,7 @@ import SkillsSection from "../components/Skills";
 import PDFfile from "../components/PDFfile";
 import { useState } from "react";
 import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
+import { isMobile } from "react-device-detect";
 
 function ResumeBuilder() {
   const [personalDetails, setPersonalDetails] = useState({
@@ -21,6 +22,7 @@ function ResumeBuilder() {
     address: "",
     postalCode: "",
   });
+  console.log(isMobile);
   const [summary, setSummary] = useState("");
   const [employemntHis, setEmploymentHis] = useState([]);
   const [Education, setEducation] = useState([]);
@@ -55,15 +57,22 @@ function ResumeBuilder() {
           />
           <SocialLinksSection links={links} setLinks={setLinks} />
           <SkillsSection skills={skills} setSkills={setSkills} />
-          <div className="w-100 mt-5 d-flex flex-column align-items-end justify-content-center floating">
+          <div
+            className={
+              isMobile
+                ? "w-100 mt-5 d-flex flex-column align-items-center justify-content-center"
+                : "w-100 mt-5 d-flex flex-column align-items-end justify-content-center " +
+                  "floating"
+            }
+          >
             <button
               type="button"
-              className="btn btn-primary btn-lg d-pdf but"
+              className="btn btn-primary  d-pdf my-2 mx-2"
               onClick={() => setDisplayPdf(!displayPdf)}
             >
-              {displayPdf ? "Go Back" : "Preview Your Cv"}
+              {displayPdf ? "Go Back" : "Preview Your CV"}
             </button>
-            <button type="submit" className="btn btn-success btn-lg d-pdf but">
+            <button type="submit" className="btn btn-success  d-pdf my-2 mx-2">
               <PDFDownloadLink
                 style={{ color: "white" }}
                 document={
@@ -78,7 +87,7 @@ function ResumeBuilder() {
                     }}
                   />
                 }
-                fileName="cv.pdf"
+                fileName={personalDetails.firstName + "CV.pdf"}
               >
                 {({ blob, url, loading, error }) =>
                   loading ? "Loading document..." : "Download Your CV"
@@ -87,7 +96,7 @@ function ResumeBuilder() {
             </button>
           </div>
         </form>
-        {displayPdf && (
+        {displayPdf && !isMobile && (
           <PDFViewer className="pdf-viwer" showToolbar={false}>
             <PDFfile
               state={{

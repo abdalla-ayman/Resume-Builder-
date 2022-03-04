@@ -97,10 +97,10 @@ function EmploymentHistory(props) {
                 >
                   start & end Date
                 </label>
-                <div className="d-flex">
+                <div className="d-flex flex-column flex-md-row">
                   <input
                     type="month"
-                    className="form-control"
+                    className="form-control my-1"
                     id={"em-start-date" + emHis.id}
                     name="startDate"
                     onChange={(e) => handleChange(e, emHis.id)}
@@ -108,7 +108,7 @@ function EmploymentHistory(props) {
                   />
                   <input
                     type="month"
-                    className="form-control"
+                    className="form-control my-1"
                     id="em-end-date"
                     name="endDate"
                     onChange={(e) => handleChange(e, emHis.id)}

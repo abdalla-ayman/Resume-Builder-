@@ -3,6 +3,7 @@ import HomeScreen from "./screens/Home";
 import AboutScreen from "./screens/About";
 import ResumeBuilder from "./screens/BuildResume";
 import Navbar from "./components/Navbar";
+import _404 from "./screens/404";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<HomeScreen />} />
           <Route path="/build" element={<ResumeBuilder />} />
           <Route path="/about" element={<AboutScreen />} />
+          <Route path="/*" element={<_404 />} />
         </Routes>
       </BrowserRouter>
     </div>

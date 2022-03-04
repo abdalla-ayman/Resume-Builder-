@@ -2,7 +2,7 @@ import gitIcon from "../assets/gitIcon.png";
 
 function About() {
   return (
-    <div className="About container d-flex flex-column justify-content-center align-items-center">
+    <div className="About container d-flex flex-column justify-content-center align-items-center text-center">
       <h1>Resume Builder Website</h1>
       <h2>Build and download Your Resume For free</h2>
 
